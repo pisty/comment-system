@@ -9,6 +9,12 @@ const CommentSchema = new Schema({
     comment: {
         type: String,
         required: ''
+    },
+    phone: {
+        type: String
+    },
+    email: {
+        type: String
     }
 });
 
