@@ -1,21 +1,20 @@
-version: '2'
+version: '3'
 services:
   mongo:
-    image: mongo:latest
-    restart: always
+    image: mongo:3.4.8
     ports:
       - "27017:27017"
     volumes:
-      - ./data:/data/db
-    hostname: mongo
-    container_name: comment-mongo
+      - ./data:/data
 
   server:
-    image: node:9
+    image: node:8
     user: node
     working_dir: /home/node/app
     environment:
       - NODE_ENV=development
+    depends_on:
+      - mongo
     links:
       - mongo:mongo
     volumes:
@@ -23,5 +22,3 @@ services:
     ports:
       - "81:3000"
     command: ["npm", "run", "start"]
-    hostname: server
-    container_name: comment-server

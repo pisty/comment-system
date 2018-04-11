@@ -1,0 +1,10 @@
+POST http://localhost:81/comments
+Content-Type: application/x-www-form-urlencoded
+
+name=Lorem&comment=Lorem ipsum
+
+###
+
+GET http://localhost:81/comments/5ace1177b31a44004837b480
+
+###
