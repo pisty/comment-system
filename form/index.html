@@ -7,16 +7,32 @@
 </head>
 <body>
 <div class="container">
+    <style>
+        .jumbotron {
+            background: lightgrey;
+            color: black;
+        }
+        .btn {
+            background: blue;
+            color: white;
+        }
+        .form-control {
+            border-radius: 6px;
+            background: white;
+            color: black;
+            border: 2px solid grey;
+        }
+    </style>
     <div class="jumbotron mt-5">
         <h1 class="display-4 mb-5">Leave a comment</h1>
         <form action="http://localhost:81/comments" method="post">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" required name="name" class="form-control" id="name" placeholder="Name">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Name">
             </div>
             <div class="form-group">
                 <label for="comment">Comment</label>
-                <textarea class="form-control" required name="comment" id="comment" placeholder="Comment"></textarea>
+                <textarea class="form-control" name="comment" id="comment" placeholder="Comment"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

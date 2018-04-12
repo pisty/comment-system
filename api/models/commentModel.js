@@ -3,12 +3,10 @@ const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema({
     name: {
-        type: String,
-        required: ''
+        type: String
     },
     comment: {
-        type: String,
-        required: ''
+        type: String
     },
     phone: {
         type: String
