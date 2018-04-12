@@ -8,7 +8,7 @@ import VueAxios from 'vue-axios'
 
 Vue.use(VueAxios, axios)
 
-axios.defaults.baseURL = 'http://localhost:81'
+axios.defaults.baseURL = process.env.API
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

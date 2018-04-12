@@ -11,7 +11,8 @@ const listComments = (req, res) => {
 };
 
 const addComment = (req, res) => {
-    let newComment = new Comment(req.body);
+    const location = req.headers.origin
+    let newComment = new Comment(Object.assign({location: location}, req.body));
     newComment.save((err, comment) => {
         if(err){
             res.send(err);
