@@ -20,6 +20,17 @@ const addComment = (req, res) => {
     });
 };
 
+const addCommentShopRenter = (req, res) => {
+    const location = req.headers.origin
+    let newComment = new Comment(Object.assign({location: location}, req.body));
+    newComment.save((err) => {
+        if(err){
+            res.send(err);
+        }
+        res.redirect(`${location}/thankyou`)
+    });
+};
+
 const getComment = (req, res) => {
     Comment.findById(req.params.commentId, (err, comment) => {
         if(err){
@@ -47,4 +58,4 @@ const deleteComment = (req, res) => {
     })
 };
 
-export default {listComments, addComment, getComment, updateComment, deleteComment};
+export default {listComments, addComment, addCommentShopRenter, getComment, updateComment, deleteComment};

@@ -13,6 +13,9 @@ const CommentSchema = new Schema({
     },
     email: {
         type: String
+    },
+    location: {
+        type: String
     }
 });
 

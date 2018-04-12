@@ -1,3 +1,10 @@
+POST http://localhost:81/commentsShopRenter
+Content-Type: application/x-www-form-urlencoded
+
+name=TesztName&comment=Lorem ipsum dolor sit amet
+
+###
+
 POST http://localhost:81/comments
 Content-Type: application/x-www-form-urlencoded
 

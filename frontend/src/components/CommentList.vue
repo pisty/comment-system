@@ -19,6 +19,7 @@
       .card.bg-light.mb-3(v-for="c in comments")
         h5.card-header.d-flex.justify-content-between.align-items-center
           router-link(:to="{name: 'CommentItem', params: { commentId: c._id}}") {{ c.name }}
+          small.ml-3.mr-auto {{c.location}}
           button.btn.btn-sm.text-danger.btn-link(@click="remove(c._id)")
             .fas.fa-times
         .card-body
@@ -64,6 +65,9 @@
 </script>
 
 <style>
+    h5 small {
+        font-size: 13px;
+    }
     .loader {
         height: 40vh;
         display: flex;
