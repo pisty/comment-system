@@ -11,7 +11,7 @@ const listComments = (req, res) => {
 };
 
 const addComment = (req, res) => {
-    const location = req.headers.origin
+    const location = req.headers.origin;
     let newComment = new Comment(Object.assign({location: location}, req.body));
     newComment.save((err, comment) => {
         if(err){
@@ -22,13 +22,14 @@ const addComment = (req, res) => {
 };
 
 const addCommentShopRenter = (req, res) => {
-    const location = req.headers.origin
-    let newComment = new Comment(Object.assign({location: location}, req.body));
+    const location = req.headers.origin;
+    let commentObj = req.body.location !== undefined ? req.body : Object.assign({location: location}, req.body);
+    let newComment = new Comment(commentObj);
     newComment.save((err) => {
         if(err){
             res.send(err);
         }
-        res.redirect(`${location}/thankyou`)
+        res.redirect(`${location}/thankyou`);
     });
 };
 

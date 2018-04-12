@@ -24,52 +24,60 @@
             .fas.fa-times
         .card-body
           .card-text {{ c.comment }}
+        .card-footer(v-if="c.email || c.phone")
+          span.mr-3(v-if="c.email")
+            i.far.fa-envelope.mr-2
+            |  {{ c.email }}
+          span(v-if="c.phone")
+            i.fas.fa-phone.mr-2
+            | {{ c.phone }}
 </template>
 
 <script>
-  export default {
-    name: 'CommentList',
-    data () {
-      return {
-        loading: false,
-        comments: []
-      }
+export default {
+  name: 'CommentList',
+  data () {
+    return {
+      loading: false,
+      comments: []
+    }
+  },
+  created () {
+    this.load()
+    setInterval(() => {
+      this.load()
+    }, 30000)
+  },
+  methods: {
+    load () {
+      this.loading = true
+      this.axios.get(`/comments`).then(response => {
+        this.comments = response.data
+        setTimeout(() => {
+          this.loading = false
+        }, 1000)
+      }).catch(error => {
+        console.log(error)
+        this.loading = false
+      })
     },
-    created () {
-      setInterval(()=>{
-        this.load()
-      }, 30000)
-    },
-    methods: {
-      load () {
-        this.loading = true
-        this.axios.get(`/comments`).then(response => {
-          this.comments = response.data
-          setTimeout(() => {
-            this.loading = false
-          }, 1000)
-        })
-          .catch(error => {
-            console.log(error)
-            this.loading = false
-          })
-      },
-      remove (commentId) {
-        this.axios.delete(`/comments/${commentId}`).then(() => {
-          setTimeout(() => {
-            this.load()
-          }, 1000)
-          this.$router.push({name: 'CommentList'})
-        })
-      }
+    remove (commentId) {
+      this.axios.delete(`/comments/${commentId}`).then(() => {
+        setTimeout(() => {
+          this.load()
+        }, 1000)
+        this.$router.push({name: 'CommentList'})
+      })
     }
   }
+}
 </script>
 
 <style>
     h5 small {
         font-size: 13px;
     }
+
     .loader {
         height: 40vh;
         display: flex;
