@@ -53,7 +53,9 @@ export default {
     add () {
       this.axios.post('/comments', {
         name: this.comment.name,
-        comment: this.comment.comment
+        comment: this.comment.comment,
+        email: this.comment.email,
+        phone: this.comment.phone
       }).then(response => {
         this.$router.push({name: 'CommentItem', params: {commentId: response.data._id}})
       })

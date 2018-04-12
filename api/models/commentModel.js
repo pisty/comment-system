@@ -16,6 +16,9 @@ const CommentSchema = new Schema({
     },
     location: {
         type: String
+    },
+    date: {
+        type: String
     }
 });
 
