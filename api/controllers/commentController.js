@@ -22,7 +22,7 @@ const addComment = (req, res) => {
 };
 
 const addCommentShopRenter = (req, res) => {
-    const location = req.headers.origin;
+    const location = req.headers.origin !== null ? req.headers.origin : req.body.location;
     let commentObj = req.body.location !== undefined ? req.body : Object.assign({location: location}, req.body);
     let newComment = new Comment(commentObj);
     newComment.save((err) => {
