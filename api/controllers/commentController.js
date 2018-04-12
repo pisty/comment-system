@@ -6,7 +6,7 @@ const listComments = (req, res) => {
         if(err){
             res.send(err);
         }
-        res.json(comment);
+        res.json(comment.reverse());
     })
 };
 

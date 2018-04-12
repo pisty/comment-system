@@ -36,7 +36,9 @@
       }
     },
     created () {
-      this.load()
+      setInterval(()=>{
+        this.load()
+      }, 30000)
     },
     methods: {
       load () {
